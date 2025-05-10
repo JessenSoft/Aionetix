@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ReactiveUI" Version="20.2.45" />
+    <PackageReference Include="ReactiveUI.WPF" Version="20.2.45" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aionetix.Core\Aionetix.Core.csproj" />
+    <ProjectReference Include="..\Aionetix.Infrastructure\Aionetix.Infrastructure.csproj" />
+    <ProjectReference Include="..\Aionetix.UI\Aionetix.UI.csproj" />
+  </ItemGroup>
+
+</Project>
