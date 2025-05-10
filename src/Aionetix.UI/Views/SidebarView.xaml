@@ -1,0 +1,10 @@
+﻿<UserControl x:Class="Aionetix.UI.Views.SidebarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel>
+        <Button Content="Dashboard" Command="{Binding OpenDashboardsCommand}" />
+        <Button Content="Workflows" Command="{Binding OpenWorkflowsCommand}" />
+        <Button Content="Jobs" Command="{Binding OpenJobMonitorCommand}" />
+        <Button Content="Einstellungen" Command="{Binding OpenSettingsCommand}" />
+    </StackPanel>
+</UserControl>

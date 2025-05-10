@@ -1,32 +1,54 @@
 ﻿using ReactiveUI;
 using System.Reactive;
-using System.Reactive.Linq;
+using Aionetix.UI.ViewModels;
 
-namespace Aionetix.UI.ViewModels;
-
-public class MainLayoutViewModel : ReactiveObject, IScreen
+namespace Aionetix.UI.ViewModels
 {
-    public RoutingState Router { get; } = new();
-
-    public ReactiveCommand<Unit, IRoutableViewModel> ShowWorkflowsCommand { get; }
-    public ReactiveCommand<Unit, IRoutableViewModel> ShowDashboardsCommand { get; }
-    public ReactiveCommand<Unit, IRoutableViewModel> ShowJobMonitorCommand { get; }
-    public ReactiveCommand<Unit, IRoutableViewModel> ShowSettingsCommand { get; }
-
-    public MainLayoutViewModel()
+    /// <summary>
+    /// Das MainLayoutViewModel steuert die Hauptnavigation und enthält die Sidebar sowie den zentralen Router.
+    /// </summary>
+    public class MainLayoutViewModel : ReactiveObject, IRoutableViewModel, IScreen
     {
-        ShowWorkflowsCommand = ReactiveCommand.CreateFromObservable(
-            () => Router.Navigate.Execute(new WorkflowsViewModel(this)));
+        #region Properties
 
-        ShowDashboardsCommand = ReactiveCommand.CreateFromObservable(
-            () => Router.Navigate.Execute(new DashboardsViewModel(this)));
+        public string UrlPathSegment => "Main";
+        public IScreen HostScreen => this;
 
-        ShowJobMonitorCommand = ReactiveCommand.CreateFromObservable(
-            () => Router.Navigate.Execute(new JobMonitorViewModel(this)));
+        public RoutingState Router { get; } = new();
 
-        ShowSettingsCommand = ReactiveCommand.CreateFromObservable(
-            () => Router.Navigate.Execute(new SettingsViewModel(this)));
+        public SidebarViewModel Sidebar { get; }
+
+        public ReactiveCommand<Unit, IRoutableViewModel> ShowDashboards { get; }
+        public ReactiveCommand<Unit, IRoutableViewModel> ShowWorkflows { get; }
+        public ReactiveCommand<Unit, IRoutableViewModel> ShowJobMonitor { get; }
+        public ReactiveCommand<Unit, IRoutableViewModel> ShowSettings { get; }
+
+        #endregion Properties
+
+        #region Constructor
+
+        public MainLayoutViewModel()
+        {
+            // Initialisiere Sidebar
+            Sidebar = new SidebarViewModel(this);
+
+            // Kommandos definieren
+            ShowDashboards = ReactiveCommand.CreateFromObservable(() =>
+                Router.Navigate.Execute(new DashboardsViewModel(this)));
+
+            ShowWorkflows = ReactiveCommand.CreateFromObservable(() =>
+                Router.Navigate.Execute(new WorkflowsViewModel(this)));
+
+            ShowJobMonitor = ReactiveCommand.CreateFromObservable(() =>
+                Router.Navigate.Execute(new JobMonitorViewModel(this)));
+
+            ShowSettings = ReactiveCommand.CreateFromObservable(() =>
+                Router.Navigate.Execute(new SettingsViewModel(this)));
+
+            // Startansicht festlegen
+            Router.Navigate.Execute(new DashboardsViewModel(this)).Subscribe();
+        }
+
+        #endregion Constructor
     }
-
-    public IObservable<IRoutableViewModel> CurrentContent => Router.CurrentViewModel;
 }

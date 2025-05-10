@@ -9,6 +9,11 @@ public partial class MainLayoutView : UserControl, IViewFor<MainLayoutViewModel>
     public MainLayoutView()
     {
         InitializeComponent();
+
+        this.WhenActivated(d =>
+        {
+            this.DataContext = ViewModel?.Sidebar ?? new SidebarViewModel(ViewModel.Router);
+        });
     }
 
     public MainLayoutViewModel ViewModel
