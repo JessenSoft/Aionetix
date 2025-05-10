@@ -1,14 +1,15 @@
 ﻿using ReactiveUI;
+using Splat;
 
 namespace Aionetix.UI.ViewModels;
 
-/// <summary>
-/// Root-Screen für die Anwendung.
-/// </summary>
 public class MainWindowViewModel : ReactiveObject, IScreen
 {
-    /// <summary>
-    /// Router für Navigation.
-    /// </summary>
     public RoutingState Router { get; } = new();
+
+    public MainWindowViewModel()
+    {
+        // Initiale View laden
+        Router.Navigate.Execute(new HomeViewModel(this));
+    }
 }

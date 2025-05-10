@@ -1,7 +1,6 @@
-﻿using System.Windows;
-using ReactiveUI;
-using Aionetix.UI;
+﻿using ReactiveUI;
 using Splat;
+using System.Windows;
 
 namespace Aionetix.App
 {
