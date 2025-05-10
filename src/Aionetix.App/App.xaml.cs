@@ -1,16 +1,18 @@
 ﻿using System.Windows;
 using ReactiveUI;
+using Aionetix.UI;
 using Splat;
-using Aionetix.UI.ViewModels;
-using Aionetix.UI.Views;
 
-namespace Aionetix.App;
-
-public partial class App : Application
+namespace Aionetix.App
 {
-    public App()
+    public partial class App : Application
     {
-        InitializeComponent();
-        Locator.CurrentMutable.Register(() => new HomeView(), typeof(IViewFor<HomeViewModel>));
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            // ViewLocator für ReactiveUI setzen
+            Locator.CurrentMutable.RegisterConstant(new Aionetix.UI.ViewLocator(), typeof(IViewLocator));
+        }
     }
 }

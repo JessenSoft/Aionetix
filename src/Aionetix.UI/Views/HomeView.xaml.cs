@@ -1,7 +1,6 @@
 ﻿using ReactiveUI;
-using System.Windows.Controls;
 using Aionetix.UI.ViewModels;
-using System.Windows;
+using System.Windows.Controls;
 
 namespace Aionetix.UI.Views;
 
@@ -9,22 +8,18 @@ public partial class HomeView : UserControl, IViewFor<HomeViewModel>
 {
     public HomeView()
     {
-        Console.WriteLine("✅ HomeView erzeugt");
         InitializeComponent();
     }
 
-    public HomeViewModel ViewModel
+    public HomeViewModel? ViewModel
     {
-        get => (HomeViewModel)GetValue(ViewModelProperty);
-        set => SetValue(ViewModelProperty, value);
+        get => (HomeViewModel?)DataContext;
+        set => DataContext = value;
     }
 
-    public static readonly DependencyProperty ViewModelProperty =
-        DependencyProperty.Register(nameof(ViewModel), typeof(HomeViewModel), typeof(HomeView));
-
-    object IViewFor.ViewModel
+    object? IViewFor.ViewModel
     {
         get => ViewModel;
-        set => ViewModel = (HomeViewModel)value;
+        set => ViewModel = (HomeViewModel?)value;
     }
 }

@@ -1,36 +1,35 @@
-﻿using Aionetix.UI.ViewModels;
+﻿using System.Windows;
 using ReactiveUI;
-using System.Windows;
+using Aionetix.UI.ViewModels;
 
-namespace Aionetix.App;
-
-public partial class MainWindow : Window, IViewFor<MainWindowViewModel>
+namespace Aionetix.App
 {
-    public MainWindow()
+    public partial class MainWindow : Window, IViewFor<MainWindowViewModel>
     {
-        InitializeComponent();
+        public MainWindow()
+        {
+            InitializeComponent();
 
-        ViewModel = new MainWindowViewModel();
-        DataContext = ViewModel;
+            ViewModel = new MainWindowViewModel();
+            DataContext = ViewModel;
 
-        var homeViewModel = new HomeViewModel(ViewModel);
+            // 🧠 WPF-DataBinding übernimmt den Router automatisch per DataContext
+            // Kein explizites Setzen von Router nötig
 
-        RouterHost.ViewModel = homeViewModel; // 🔁 direkt setzen, kein Routing
-        Console.WriteLine("✅ RouterHost.ViewModel gesetzt");
-    }
+            // ➕ Navigation starten
+            ViewModel.Router.Navigate.Execute(new HomeViewModel(ViewModel));
+        }
 
-    public static readonly DependencyProperty ViewModelProperty =
-        DependencyProperty.Register(nameof(ViewModel), typeof(MainWindowViewModel), typeof(MainWindow));
+        public MainWindowViewModel ViewModel
+        {
+            get => (MainWindowViewModel)DataContext!;
+            set => DataContext = value;
+        }
 
-    public MainWindowViewModel ViewModel
-    {
-        get => (MainWindowViewModel)GetValue(ViewModelProperty);
-        set => SetValue(ViewModelProperty, value);
-    }
-
-    object IViewFor.ViewModel
-    {
-        get => ViewModel!;
-        set => ViewModel = (MainWindowViewModel)value;
+        object? IViewFor.ViewModel
+        {
+            get => ViewModel;
+            set => ViewModel = (MainWindowViewModel)value!;
+        }
     }
 }

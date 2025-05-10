@@ -10,5 +10,5 @@ public class MainWindowViewModel : ReactiveObject, IScreen
     /// <summary>
     /// Router für Navigation.
     /// </summary>
-    public RoutingState Router { get; } = new RoutingState();
+    public RoutingState Router { get; } = new();
 }
