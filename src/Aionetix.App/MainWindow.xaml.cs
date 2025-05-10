@@ -1,6 +1,6 @@
-﻿using System.Windows;
+﻿using Aionetix.UI.ViewModels;
 using ReactiveUI;
-using Aionetix.UI.ViewModels;
+using System.Windows;
 
 namespace Aionetix.App;
 
@@ -13,8 +13,10 @@ public partial class MainWindow : Window, IViewFor<MainWindowViewModel>
         ViewModel = new MainWindowViewModel();
         DataContext = ViewModel;
 
-        // Navigation korrekt auslösen
-        ViewModel.Router.Navigate.Execute(new HomeViewModel(ViewModel)).Subscribe();
+        var homeViewModel = new HomeViewModel(ViewModel);
+
+        RouterHost.ViewModel = homeViewModel; // 🔁 direkt setzen, kein Routing
+        Console.WriteLine("✅ RouterHost.ViewModel gesetzt");
     }
 
     public static readonly DependencyProperty ViewModelProperty =
@@ -28,7 +30,7 @@ public partial class MainWindow : Window, IViewFor<MainWindowViewModel>
 
     object IViewFor.ViewModel
     {
-        get => ViewModel;
+        get => ViewModel!;
         set => ViewModel = (MainWindowViewModel)value;
     }
 }
