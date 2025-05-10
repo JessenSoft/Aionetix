@@ -1,24 +1,32 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using ReactiveUI;
+using Aionetix.UI.ViewModels;
 
-namespace Aionetix.App
+namespace Aionetix.App;
+
+public partial class MainWindow : Window, IViewFor<MainWindowViewModel>
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public MainWindow()
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+        ViewModel = new MainWindowViewModel();
+        DataContext = ViewModel;
+
+        ViewModel.Router.Navigate.Execute(new HomeViewModel(ViewModel));
+    }
+
+    public static readonly DependencyProperty ViewModelProperty =
+        DependencyProperty.Register(nameof(ViewModel), typeof(MainWindowViewModel), typeof(MainWindow));
+
+    public MainWindowViewModel ViewModel
+    {
+        get => (MainWindowViewModel)GetValue(ViewModelProperty);
+        set => SetValue(ViewModelProperty, value);
+    }
+
+    object IViewFor.ViewModel
+    {
+        get => ViewModel;
+        set => ViewModel = (MainWindowViewModel)value;
     }
 }
