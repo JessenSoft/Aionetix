@@ -14,5 +14,6 @@ public class HomeViewModel : ReactiveObject, IRoutableViewModel
     public HomeViewModel(IScreen? screen = null)
     {
         HostScreen = screen ?? Locator.Current.GetService<IScreen>()!;
+        Console.WriteLine("HomeViewModel navigated");
     }
 }

@@ -9,17 +9,18 @@ public partial class HomeView : UserControl, IViewFor<HomeViewModel>
 {
     public HomeView()
     {
+        Console.WriteLine("✅ HomeView erzeugt");
         InitializeComponent();
     }
-
-    public static readonly DependencyProperty ViewModelProperty =
-        DependencyProperty.Register(nameof(ViewModel), typeof(HomeViewModel), typeof(HomeView));
 
     public HomeViewModel ViewModel
     {
         get => (HomeViewModel)GetValue(ViewModelProperty);
         set => SetValue(ViewModelProperty, value);
     }
+
+    public static readonly DependencyProperty ViewModelProperty =
+        DependencyProperty.Register(nameof(ViewModel), typeof(HomeViewModel), typeof(HomeView));
 
     object IViewFor.ViewModel
     {

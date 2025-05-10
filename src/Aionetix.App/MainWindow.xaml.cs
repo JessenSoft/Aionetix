@@ -9,10 +9,12 @@ public partial class MainWindow : Window, IViewFor<MainWindowViewModel>
     public MainWindow()
     {
         InitializeComponent();
+
         ViewModel = new MainWindowViewModel();
         DataContext = ViewModel;
 
-        ViewModel.Router.Navigate.Execute(new HomeViewModel(ViewModel));
+        // Navigation korrekt auslösen
+        ViewModel.Router.Navigate.Execute(new HomeViewModel(ViewModel)).Subscribe();
     }
 
     public static readonly DependencyProperty ViewModelProperty =
