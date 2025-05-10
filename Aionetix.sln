@@ -32,10 +32,22 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QA", "QA", "{72CCFC54-6B02-43EB-B20B-7BB8E18F6515}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UX", "UX", "{85DAD57D-6FC8-4B0E-97C0-F8BF86557588}"
+	ProjectSection(SolutionItems) = preProject
+		team\UX\design-guidlines.md = team\UX\design-guidlines.md
+		team\UX\navigation-layout.md = team\UX\navigation-layout.md
+		team\UX\overview.md = team\UX\overview.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projektmappenelemente", "Projektmappenelemente", "{84D27F74-D2BA-6C25-2661-968F101900D9}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mockups", "mockups", "{8A38B387-2F73-4570-AE35-5C607DA9759D}"
+	ProjectSection(SolutionItems) = preProject
+		team\UX\mockups\aionetix-dashboard-view-mockup.png = team\UX\mockups\aionetix-dashboard-view-mockup.png
+		team\UX\mockups\aionetix-main-layout-mockup.png = team\UX\mockups\aionetix-main-layout-mockup.png
+		team\UX\mockups\aionetix-workflow-editor-mockup.png = team\UX\mockups\aionetix-workflow-editor-mockup.png
 	EndProjectSection
 EndProject
 Global
@@ -78,6 +90,7 @@ Global
 		{08136C03-6BFF-4000-B33B-9D4A35DF639B} = {236E7A00-976C-40DD-A486-A73972187627}
 		{72CCFC54-6B02-43EB-B20B-7BB8E18F6515} = {236E7A00-976C-40DD-A486-A73972187627}
 		{85DAD57D-6FC8-4B0E-97C0-F8BF86557588} = {236E7A00-976C-40DD-A486-A73972187627}
+		{8A38B387-2F73-4570-AE35-5C607DA9759D} = {85DAD57D-6FC8-4B0E-97C0-F8BF86557588}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E1B2E1F6-B26C-4002-B53F-23473DAC72D5}
