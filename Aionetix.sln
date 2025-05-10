@@ -19,14 +19,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "team", "team", "{236E7A00-9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProjectManager", "ProjectManager", "{F50832B5-9274-41E1-8F65-428AF253D3AC}"
 	ProjectSection(SolutionItems) = preProject
-		Roadmap.md = Roadmap.md
+		team\ProjectManager\Roadmap.md = team\ProjectManager\Roadmap.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Architecture", "Architecture", "{08136C03-6BFF-4000-B33B-9D4A35DF639B}"
 	ProjectSection(SolutionItems) = preProject
-		ArchitectueOverview.md = ArchitectueOverview.md
-		C4_Level1.md = C4_Level1.md
-		C4_Level2.md = C4_Level2.md
+		team\Architecture\ArchitectueOverview.md = team\Architecture\ArchitectueOverview.md
+		team\Architecture\C4_Level1.md = team\Architecture\C4_Level1.md
+		team\Architecture\C4_Level2.md = team\Architecture\C4_Level2.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QA", "QA", "{72CCFC54-6B02-43EB-B20B-7BB8E18F6515}"
